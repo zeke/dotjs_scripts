@@ -1,1 +1,3 @@
 // Put common functions in here...
+
+// $("<style type='text/css'>div { display: none }</style>").appendTo("head");
