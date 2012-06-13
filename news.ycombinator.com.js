@@ -1,3 +1,5 @@
+// http://cl.ly/HM0N
+
 $('table').css({
   width: '700px',
   background: 'none'
