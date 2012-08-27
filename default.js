@@ -1,3 +1,4 @@
-// Put common functions in here...
-
-// $("<style type='text/css'>div { display: none }</style>").appendTo("head");
+$("a[href*='cl.ly']").each(function(){
+  var id = $(this).attr('href').split("/").reverse()[0];
+  $(this).html("<img src='http://cl.ly/image/" + id  + "/content#.png'>");
+});
