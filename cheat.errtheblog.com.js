@@ -1,8 +1,8 @@
 // http://cl.ly/HOgt
 
 $('body').css({
-  background: '#CCC',
-  color: '#333'
+  background: '#F6F6F6',
+  color: '#222'
   
   // Also nice...
   // background: '#333',
