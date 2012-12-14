@@ -56,6 +56,8 @@ class Mindbody
       courses.push course
     return courses
 
+# class Course
+  
 
 class Yoga
   @baseUrl: "http://localhost:5000/"
@@ -70,13 +72,8 @@ class Teacher
     avatar_url: @avatar_url
     bio: @bio
     mindbody_id: @mindbody_id
-    
-  save: ->
-    # log @body()
-    $.post Yoga.createTeacherUrl, {teacher: @body()}, (response) ->
-      # log(response)
       
-  @createFromCourseData: (course) ->
+  @create: (course) ->
     $.get Mindbody.trainerUrl(course.trainerId), (response) ->
       $data = $(response)
       teacher = new Teacher
@@ -86,7 +83,8 @@ class Teacher
       teacher.bio = $data.find('div.userHTML').html()
       if teacher.avatar_url and teacher.avatar_url.match(/staff\/(\d+)/)?
         teacher.mindbody_id = teacher.avatar_url.match(/staff\/(\d+)/)[1]
-      teacher.save()
+        
+      $.post Yoga.createTeacherUrl, {teacher: @body()}, (response) ->
       
   @scheduleCourse: (course) ->
     $.post Yoga.createSchedulingUrl, {course: course}, (response) ->
@@ -94,19 +92,9 @@ class Teacher
 
 # Do the Do
 # -----------------------------------------------------------------------------
-Mindbody = Mindbody
-Yoga = Yoga
-Teacher = Teacher
 courses = Mindbody.scrapeCourses()
 
+log courses
+
 # for course in courses when course.trainerId?
-#   Teacher.createFromCourseData(course)
-
-setTimeout (=>  ), 3000
-
-for course in courses when course.trainerId?
-  Teacher.scheduleCourse(course)
-  
-# for course in courses
-#   $.post "http://localhost:3000/import_mindbody", {course: course}, (response) ->
-#     log response
+#   Teacher.create(course.trainerId)

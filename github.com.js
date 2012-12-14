@@ -1,0 +1,1 @@
+$('.top-nav, .native-clones, #footer, #footer-push, .repository-lang-stats').hide()
